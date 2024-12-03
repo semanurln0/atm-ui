@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATM UI with Bluetooth</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ATM with Bluetooth NFC</h1>
+    <div id="step-1">
+      <h2>Step 1: Scan NFC Card</h2>
+      <button id="connect-btn">Connect to Bluetooth Device</button>
+      <p id="status">Status: Disconnected</p>
+      <textarea id="received-card-data" placeholder="Scanned card data will appear here..." readonly></textarea>
+    </div>
+
+    <div id="step-2" class="hidden">
+      <h2>Step 2: Enter PIN</h2>
+      <input type="password" id="pin-input" placeholder="Enter your PIN" />
+      <button id="validate-pin">Submit PIN</button>
+      <p id="pin-status"></p>
+    </div>
+
+    <div id="step-3" class="hidden">
+      <h2>ATM Menu</h2>
+      <button data-action="balance">Check Balance</button>
+      <button data-action="withdraw">Withdraw Money</button>
+      <button data-action="deposit">Deposit Money</button>
+      <button data-action="exit">Exit</button>
+      <p id="atm-output"></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
