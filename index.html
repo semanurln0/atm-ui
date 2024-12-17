@@ -3,35 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ATM UI with Bluetooth</title>
+  <title>SN Bank ATM System</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>ATM with Bluetooth NFC</h1>
-    <div id="step-1">
-      <h2>Step 1: Scan NFC Card</h2>
-      <button id="connect-btn">Connect to Bluetooth Device</button>
-      <p id="status">Status: Disconnected</p>
-      <textarea id="received-card-data" placeholder="Scanned card data will appear here..." readonly></textarea>
-    </div>
+  <!-- Logo -->
+  <img src="logo.png" alt="SN Bank Logo" class="logo">
 
-    <div id="step-2" class="hidden">
-      <h2>Step 2: Enter PIN</h2>
-      <input type="password" id="pin-input" placeholder="Enter your PIN" />
-      <button id="validate-pin">Submit PIN</button>
-      <p id="pin-status"></p>
-    </div>
+  <!-- Login Screen -->
+  <div id="login-screen" class="screen active">
+    <h2>Welcome to SN Bank</h2>
+    <input type="text" id="user-id" placeholder="Enter User ID">
+    <input type="password" id="user-password" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <button onclick="openRegister()">Register</button>
+    <p id="login-error" class="error-message"></p>
+  </div>
 
-    <div id="step-3" class="hidden">
-      <h2>ATM Menu</h2>
-      <button data-action="balance">Check Balance</button>
-      <button data-action="withdraw">Withdraw Money</button>
-      <button data-action="deposit">Deposit Money</button>
-      <button data-action="exit">Exit</button>
-      <p id="atm-output"></p>
+  <!-- Registration Screen -->
+  <div id="register-screen" class="screen hidden">
+    <h2>Register New Account</h2>
+    <input type="text" id="new-user-id" placeholder="Create User ID">
+    <input type="password" id="new-user-password" placeholder="Create Password">
+    <button onclick="register()">Register</button>
+    <button onclick="backToLogin()">Back to Login</button>
+    <p id="register-error" class="error-message"></p>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="screen hidden">
+    <h2>SN Bank Dashboard</h2>
+    <div id="account-balances"></div>
+    <div class="options-panel">
+      <button onclick="deposit()">Deposit</button>
+      <button onclick="withdraw()">Withdraw</button>
+      <button onclick="quickWithdrawal()">Quick Withdrawal</button>
+      <button onclick="transferMoney()">Transfer Money</button>
+      <button onclick="payments()">Payments</button>
+      <button onclick="creditServices()">Credit Card Services</button>
+      <button onclick="logout()">Logout</button>
     </div>
   </div>
+
+  <!-- Quick Withdrawal Popup -->
+  <div id="quick-withdrawal-popup" class="popup hidden">
+    <h3>Select Quick Withdrawal Amount</h3>
+    <div id="quick-buttons"></div>
+    <button onclick="closePopup('quick-withdrawal-popup')">Cancel</button>
+  </div>
+
+  <!-- Payments Popup -->
+  <div id="payments-popup" class="popup hidden">
+    <h3>Make a Payment</h3>
+    <p>Choose Account to Pay From:</p>
+    <div id="payment-accounts"></div>
+    <input type="text" id="recipient-id" placeholder="Recipient User ID">
+    <input type="number" id="payment-amount" placeholder="Enter Amount">
+    <button onclick="submitPayment()">Submit Payment</button>
+    <button onclick="closePopup('payments-popup')">Cancel</button>
+  </div>
+
+  <!-- Dynamic Popups -->
+  <div id="popup-container" class="hidden"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
