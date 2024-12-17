@@ -1,5 +1,5 @@
 let users = JSON.parse(localStorage.getItem('atmUsers')) || [
-  { user_id: 'admin', password: '3372', accounts: { EUR: 1000, USD: 500, TRY: 0 } }
+  { user_id: 'admin', password: '3372', accounts: { EUR: 1000, USD: 500, TRY: 750 } }
 ];
 let currentUser = null;
 
